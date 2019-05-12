@@ -13,7 +13,7 @@ const main = () => {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(res => {
         console.log('login')
-        window.location.replace('../login/login.html');
+        window.location.replace('../login');
       })
       .catch(err => {
         console.log('error: ', err.message)
