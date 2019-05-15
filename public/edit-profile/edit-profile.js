@@ -2,12 +2,12 @@
 const onUpdateProfile = () => {
   const user = firebase.auth().currentUser;
   
-  const name = document.getElementById('name').value;
-  const photoUrl = document.getElementById('photoUrl').value;
+  const displayName = document.getElementById('name').value;
+  const photoURL = document.getElementById('photoUrl').value;
   
   user.updateProfile({
-    displayName: name,
-    photoURL: photoUrl
+    displayName,
+    photoURL
   }).then(() => {
     window.location.href = '../my-account'
   }).catch(err => {

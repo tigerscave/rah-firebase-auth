@@ -57,6 +57,11 @@ const main = () => {
   const editProfile = document.getElementById('editProfile');
   editProfile.addEventListener('click', () => {
     window.location.href = '../edit-profile/edit-profile.html'
+  });
+  
+  const changeEmailOrPassword = document.getElementById('changeEmailOrPassword');
+  changeEmailOrPassword.addEventListener('click', () => {
+    window.location.href = '../change-email-pw'
   })
 }
 
