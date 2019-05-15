@@ -5,10 +5,12 @@ const getUserInfo = () => {
   console.log(user)
   const emailElement = document.getElementById('email');
   const nameElement = document.getElementById('name');
+  const image = document.getElementById('image');
   
   if (user != null) {
     emailElement.innerHTML = user.email;
-    nameElement.innerHTML = user.name
+    nameElement.innerHTML = user.displayName;
+    image.src = user.photoURL;
   }
 }
 
@@ -50,7 +52,12 @@ const main = () => {
   signOutButton.addEventListener('click', onSignOutUser)
   
   const deleteAccountButton = document.getElementById('deleteAccount')
-  deleteAccountButton.addEventListener('click', onDeleteAccount)
+  deleteAccountButton.addEventListener('click', onDeleteAccount);
+  
+  const editProfile = document.getElementById('editProfile');
+  editProfile.addEventListener('click', () => {
+    window.location.href = '../edit-profile/edit-profile.html'
+  })
 }
 
 window.addEventListener('DOMContentLoaded', main)
