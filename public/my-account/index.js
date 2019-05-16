@@ -68,6 +68,11 @@ const main = () => {
   changePhoto.addEventListener('click', () => {
     window.location.href = '../change-photo'
   })
+  
+  const userDetail = document.getElementById('userDetail');
+  userDetail.addEventListener('click', () => {
+    window.location.href = '../user-detail'
+  })
 }
 
 window.addEventListener('DOMContentLoaded', main)
