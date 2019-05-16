@@ -62,6 +62,11 @@ const main = () => {
   const changeEmailOrPassword = document.getElementById('changeEmailOrPassword');
   changeEmailOrPassword.addEventListener('click', () => {
     window.location.href = '../change-email-pw'
+  });
+  
+  const changePhoto = document.getElementById('changePhoto');
+  changePhoto.addEventListener('click', () => {
+    window.location.href = '../change-photo'
   })
 }
 
