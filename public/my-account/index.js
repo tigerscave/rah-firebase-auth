@@ -71,7 +71,7 @@ const main = () => {
   
   const userDetail = document.getElementById('userDetail');
   userDetail.addEventListener('click', () => {
-    window.location.href = '../user-detail'
+    window.location.href = '../user-detail/index.html'
   })
 }
 
