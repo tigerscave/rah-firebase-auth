@@ -11,8 +11,9 @@ const onUpdateUserDetail = () => {
     biography,
     lastName,
     birthDay
-  }).then((res) => {
-    console.log(res)
+  }).then(() => {
+    window.location.href = '../user-detail'
+    
   })
 }
 

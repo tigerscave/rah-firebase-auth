@@ -6,12 +6,21 @@
 const onCheckState = () => {
   const db = firebase.firestore();
   const biography = document.getElementById('biography');
+  const nameElement = document.getElementById('firstName');
+  const lastNameElement = document.getElementById('lastName');
+  const birthDayElement = document.getElementById('birthDay');
   
   firebase.auth().onAuthStateChanged(user => {
     console.log(user, 'user')
     if(user) {
+      nameElement.innerHTML = user.displayName;
+      
       db.collection('users').doc(user.uid).get().then(doc => {
         console.log(doc.data())
+        const userDetail = doc.data();
+        lastNameElement.innerHTML = userDetail.lastName;
+        birthDayElement.innerHTML = userDetail.birthDay;
+        biography.innerHTML = userDetail.biography;
       })
     } else {
       window.location.replace('../login/login.html')
