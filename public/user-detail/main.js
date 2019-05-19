@@ -6,19 +6,21 @@
 const onCheckState = () => {
   const db = firebase.firestore();
   const biography = document.getElementById('biography');
-  const nameElement = document.getElementById('firstName');
+  const displayName = document.getElementById('displayName');
+  const firstNameElement = document.getElementById('firstName')
   const lastNameElement = document.getElementById('lastName');
   const birthDayElement = document.getElementById('birthDay');
   
   firebase.auth().onAuthStateChanged(user => {
     console.log(user, 'user')
     if(user) {
-      nameElement.innerHTML = user.displayName;
+      displayName.innerHTML = user.displayName;
       
       db.collection('users').doc(user.uid).get().then(doc => {
         console.log(doc.data())
         const userDetail = doc.data();
-        lastNameElement.innerHTML = userDetail.lastName;
+        firstNameElement.innerHTML = userDetail.firstName;
+        lastNameElement.innerHTML = userDetail.lastName
         birthDayElement.innerHTML = userDetail.birthDay;
         biography.innerHTML = userDetail.biography;
       })
@@ -29,19 +31,6 @@ const onCheckState = () => {
   })
 }
 
-const onHogeClicked = () => {
-  console.log("hoge")
-  const db = firebase.firestore();
-  const user = firebase.auth().currentUser;
-  console.log(user.uid);
-  
-  db.collection('users').doc(user.uid).set({
-    firstName: "hoge",
-    secondName: "rah"
-  }).then((res) => {
-    console.log(res)
-  })
-}
 
 const main = () => {
   console.log('file loaded')
@@ -51,7 +40,6 @@ const main = () => {
   editDetail.addEventListener('click', () => {
     window.location.href = '../user-edit-detail'
   })
-  document.getElementById('hoge').addEventListener('click', onHogeClicked)
 }
 
 window.addEventListener('DOMContentLoaded', main)
