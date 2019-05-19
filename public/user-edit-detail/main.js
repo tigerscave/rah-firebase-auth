@@ -4,9 +4,13 @@ const onUpdateUserDetail = () => {
   const user = firebase.auth().currentUser;
   
   const biography = document.getElementById('biography').value;
+  const lastName = document.getElementById('lastName').value;
+  const birthDay = document.getElementById('birthDay').value;
   
   db.collection('users').doc(user.uid).set({
     biography,
+    lastName,
+    birthDay
   }).then((res) => {
     console.log(res)
   })
