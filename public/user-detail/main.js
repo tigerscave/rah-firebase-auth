@@ -18,15 +18,19 @@ const onCheckState = () => {
       
       db.collection('users').doc(user.uid).get().then(doc => {
         console.log(doc.data())
-        const userDetail = doc.data();
-        firstNameElement.innerHTML = userDetail.firstName;
-        lastNameElement.innerHTML = userDetail.lastName
-        birthDayElement.innerHTML = userDetail.birthDay;
-        biography.innerHTML = userDetail.biography;
+        const { firstName, lastName, birthDay, biography } = doc.data();
+        
+        const userBirthDay = dayjs(birthDay.toDate()).format('YYYY-MM-DD');
+        
+        console.log('user birthday ', userBirthDay);
+        
+        firstNameElement.innerHTML = firstName;
+        lastNameElement.innerHTML = lastName
+        birthDayElement.innerHTML = userBirthDay;
+        biography.innerHTML = biography;
       })
     } else {
-      window.location.replace('../login/login.html')
-  
+      window.location.replace('../login/login.html');
     }
   })
 }

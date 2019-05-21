@@ -12,7 +12,7 @@ const onUpdateProfile = () => {
     window.location.href = '../my-account'
   }).catch(err => {
     alert('Error: ', err.message)
-  })
+  });
 }
 
 const main = () => {

@@ -24,11 +24,13 @@ const onUpdateUserDetail = () => {
   const birthDay = document.getElementById('birthDay').value;
   const firstName = document.getElementById('firstName').value;
   
+  const timeStampBirthDay = firebase.firestore.Timestamp.fromDate(new Date(birthDay));
+  
   db.collection('users').doc(user.uid).set({
     biography,
     firstName,
     lastName,
-    birthDay
+    birthDay: timeStampBirthDay
   }).then(() => {
     window.location.href = '../user-detail'
   })
