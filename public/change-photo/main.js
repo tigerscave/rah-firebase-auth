@@ -27,6 +27,7 @@ let image;
 
 const onUploadNewPhoto = () => {
   const storageRef = firebase.storage().ref();
+  console.log('Storage is: ', storageRef)
   const imagesRef = storageRef.child(`images/${image.name}`)
   console.log('image from storage ', imagesRef)
   if (image) {
@@ -34,7 +35,7 @@ const onUploadNewPhoto = () => {
       snapshot.ref.getDownloadURL().then(url => {
         console.log('this is url from storage', url)
         onUpdateUrlPhoto(url)
-        window.location.replace('../my-account')
+    //    window.location.replace('../my-account')
       })
     })
   }
