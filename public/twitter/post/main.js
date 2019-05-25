@@ -26,6 +26,8 @@ const onHandleTweetPost = imageUrl => {
       image: imageUrl ? imageUrl : '',
       userId: user.uid,
       createdAt: date.fromDate(new Date())
+    }).then(() => {
+      window.location.replace('../my-tweet')
     })
   })
 }
