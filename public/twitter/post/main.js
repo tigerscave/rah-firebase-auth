@@ -4,13 +4,17 @@ let image;
 
 const onCreateTweetWithPhoto = () => {
   const storageRef = firebase.storage().ref();
-  const imagesRef = storageRef.child(`images/${image.name}`);
+  
   if (image) {
-    imagesRef.put(image).then(snapshot => {
-      snapshot.ref.getDownloadURL().then(imageUrl => {
-        onHandleTweetPost(imageUrl);
+    const imagesRef = storageRef.child(`images/${image.name}`);
+    imagesRef.put(image)
+      .then(snapshot => {
+        snapshot.ref.getDownloadURL().then(imageUrl => {
+          onHandleTweetPost(imageUrl);
       })
     })
+  } else {
+    onHandleTweetPost('')
   }
 }
 
